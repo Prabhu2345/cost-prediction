@@ -23,3 +23,4 @@ project_description = "\n".join(markdown_cells[:3])  # Taking first 3 markdown c
 sample_code = "\n".join(code_cells[:3])  # Taking first 3 code cells for reference
 
 project_description[:500], sample_code[:500]  # Show initial content for analysis
+
