@@ -1,0 +1,61 @@
+# Insurance Cost Prediction
+
+## Overview
+This project predicts insurance costs using machine learning techniques, specifically **Linear Regression**. The dataset contains various features such as age, BMI, smoking status, and region to determine the insurance cost of individuals.
+
+## Dataset
+The dataset used in this project is `insurance.csv`, which includes the following columns:
+- `age`: Age of the individual
+- `sex`: Gender of the individual
+- `bmi`: Body Mass Index
+- `children`: Number of children/dependents
+- `smoker`: Whether the person is a smoker or not
+- `region`: The region where the individual resides
+- `charges`: The insurance cost (target variable)
+
+## Installation
+To run this project, install the required dependencies:
+```bash
+pip install numpy pandas matplotlib seaborn scikit-learn
+```
+
+## Usage
+1. Load the dataset using Pandas.
+2. Perform exploratory data analysis (EDA) with visualization.
+3. Preprocess the data (handle categorical values, scaling, etc.).
+4. Split the dataset into training and testing sets.
+5. Train a **Linear Regression model**.
+6. Evaluate the model using metrics like Mean Squared Error (MSE) and R-squared.
+
+## Code Example
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn import metrics
+
+df = pd.read_csv('insurance.csv')
+X = df[['age', 'bmi', 'children']]
+y = df['charges']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
+```
+
+## Results
+- The model predicts insurance charges based on the given features.
+- Model performance is evaluated using **MSE** and **R-squared** scores.
+
+## Contributors
+If you’d like to contribute, feel free to submit a pull request.
+
+## License
+This project is open-source under the MIT License.
+
